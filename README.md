@@ -7,22 +7,34 @@
 ## Install
 
 ```bash
-npm install --save @linka-cloud/theme
+yarn add @linka-cloud/theme
 ```
 
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import { ColorModeThemeProvider, UiMode } from '@linka-cloud/theme'
+import { Box, Paper } from '@mui/material'
+import React, { useState } from 'react'
 
-import MyComponent from '@linka-cloud/theme'
-import '@linka-cloud/theme/dist/index.css'
+import "@linka-cloud/theme/dist/index.css"
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+const Home = () => (
+  <Box sx={{ width: '100%', height: '100%', display: 'flex' }}>
+    <Paper sx={{padding: 10}}>Home</Paper>
+  </Box>
+)
+
+const App = () => {
+  const [mode, setMode] = useState<UiMode>('light')
+  return (
+    <ColorModeThemeProvider mode={mode} setMode={setMode}>
+      <Home />
+    </ColorModeThemeProvider>
+  )
 }
+
+export default App
 ```
 
 ## License
